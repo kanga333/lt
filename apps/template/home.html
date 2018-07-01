@@ -2,7 +2,55 @@
 {% block body %}
 <div class="card">
     <div class="card-body">
-        {{ message }}
+        <h1>{{ message }}</h1>
+        <br>
+        {% include "common/flash_message.html" %}
+        <br>
+        <!-- 申し込み済みならその内容を、そうでなければ申し込みボタンを表示する -->
+        {% if is_applied %}
+           以下の内容で参加申し込み済みです
+        {% else %}
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal" style="margin-top:10px;">
+            参加申し込み
+        </button>
+        {% endif %}
+
+        <!-- Modal -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">LT登録フォーム</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form action="/register" method="post">
+                      <div class="form-group">
+                          <label for="lt-title">発表タイトル</label>
+                          <input type="text" class="form-control" id="lt-title" name="lt-title">
+                          <small class="form-text text-muted">登録後も変更可能です</small>
+                      </div>
+                      <div class="form-group">
+                          <label for="lt-time">発表時間(分)</label>
+                          <select class="form-control" id="lt-time" name="lt-time">
+                              <option>5</option>
+                              <option>8</option>
+                              <option>10</option>
+                          </select>
+                          <small class="form-text text-muted">登録後も変更可能です</small>
+                      </div>
+                      <div style="float:right">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                          <button type="submit" class="btn btn-primary">登録する</button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div>
 {% endblock %}
