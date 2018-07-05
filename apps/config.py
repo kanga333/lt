@@ -7,6 +7,6 @@ class DevConfig:
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
-    SECRET_KEY = 'secret key'  # todo change secret key
+    SECRET_KEY = b'\xb4B\x9f\tXd\xd9\x07\xa1\xdf\xd7\x0c\x80\xe9\xf4&'
 
 Config = DevConfig
