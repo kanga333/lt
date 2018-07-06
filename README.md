@@ -17,6 +17,7 @@ Project Interpreter
 
 # run
 ```bash
+FLASK_APP=run.py flask db upgrade
 python run.py
 ```
 Access to `http://localhost:5000/`
