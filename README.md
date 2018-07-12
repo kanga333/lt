@@ -17,7 +17,14 @@ Project Interpreter
 
 # run
 ```bash
+FLASK_APP=run.py flask db migrate
 FLASK_APP=run.py flask db upgrade
 python run.py
+```
+
+# DBモデル更新時
+```bash
+FLASK_APP=run.py flask db migrate
+FLASK_APP=run.py flask db upgrade
 ```
 Access to `http://localhost:5000/`
