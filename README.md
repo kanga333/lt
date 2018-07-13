@@ -1,5 +1,5 @@
 # lt
-application to improve lt
+LTアプリです
 
 # setup
 ```bash
