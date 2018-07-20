@@ -1,7 +1,7 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from apps import app
 from apps.services import get_home_message, register_lt
-from apps.models import User
+from apps.models import User, Lt
 
 
 @app.route('/')
@@ -38,6 +38,17 @@ def register():
         flash_message = f"登録失敗しました"
         flash(flash_message)
         return redirect(url_for('index'))
+
+
+@app.route('/lts')
+def lts():
+    """
+    LT一覧表示
+    :return:
+    """
+    lts = Lt.query.all()
+    dates = [lt.date for lt in lts]
+    return render_template('lts.html', dates=dates)
 
 
 @app.route('/login')
